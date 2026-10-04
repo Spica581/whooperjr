@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | SPS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <div class="app-layout">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-icon">S</div>
+                <h2 style="font-size: 1.125rem;">SPS Portal</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">Dashboard</a>
+                <a href="students.html" class="nav-item">Student Records</a>
+                <a href="add-student.html" class="nav-item">Add Student</a>
+            </nav>
+        </aside>
+
+        <!-- Main Wrapper -->
+        <div class="main-wrapper">
+            <header class="top-header">
+                <h1 class="header-title">Overview</h1>
+                <div class="header-actions">
+                    <div class="user-profile">
+                        <div class="avatar" style="background: url('https://ui-avatars.com/api/?name=Admin+User') center/cover;"></div>
+                        <span style="font-weight: 500; font-size: 0.875rem;">Admin User</span>
+                    </div>
+                </div>
+            </header>
+
+            <main class="content-area">
+                <div class="form-grid">
+                    <!-- Stat Card 1 -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 style="color: var(--text-muted); font-size: 0.875rem; font-weight: 500;">Total Students</h3>
+                            <div id="stat-total-students" style="font-size: 2.5rem; font-weight: 700; color: var(--primary); margin-top: 0.5rem;">0</div>
+                        </div>
+                    </div>
+                    <!-- Stat Card 2 -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 style="color: var(--text-muted); font-size: 0.875rem; font-weight: 500;">Active Profiles</h3>
+                            <div id="stat-active-students" style="font-size: 2.5rem; font-weight: 700; color: var(--success-text); margin-top: 0.5rem;">0</div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="data/mock-data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

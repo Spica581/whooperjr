@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Color Palette */
+    --primary: #4f46e5;       /* Indigo 600 */
+    --primary-hover: #4338ca; /* Indigo 700 */
+    --primary-light: #e0e7ff; /* Indigo 100 */
+    
+    --bg-body: #f8fafc;       /* Slate 50 */
+    --surface: #ffffff;
+    
+    --text-main: #0f172a;     /* Slate 900 */
+    --text-muted: #64748b;    /* Slate 500 */
+    
+    --border-color: #e2e8f0;  /* Slate 200 */
+    
+    --success-bg: #d1fae5;    /* Emerald 100 */
+    --success-text: #047857;  /* Emerald 700 */
+    --error-bg: #ffe4e6;      /* Rose 100 */
+    --error-text: #be123c;    /* Rose 700 */
+    
+    /* Design Tokens */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { font-weight: 600; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student | SPS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <div class="app-layout">
+        
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-icon">S</div>
+                <h2 style="font-size: 1.125rem;">SPS Portal</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">Dashboard</a>
+                <a href="students.html" class="nav-item">Student Records</a>
+                <a href="add-student.html" class="nav-item">Add Student</a>
+            </nav>
+        </aside>
+
+        <div class="main-wrapper">
+            <header class="top-header">
+                <h1 class="header-title">Register New Student</h1>
+            </header>
+
+            <main class="content-area">
+                <form id="add-student-form">
+                    <div class="card" style="max-width: 900px; margin: 0 auto;">
+                        <div class="card-header">
+                            <h2 style="font-size: 1.125rem;">General Information</h2>
+                        </div>
+                        <div class="card-body">
+                            
+                            <h3 class="form-section-title" style="margin-top: 0;">Academic Details</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label class="form-label">Student Number *</label>
+                                    <input type="text" name="studentNo" class="form-control" required placeholder="e.g. 2026-0000">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Campus *</label>
+                                    <select name="campus" id="campus" class="form-control" required>
+                                        <option value="">Select Campus...</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Program *</label>
+                                    <select name="program" id="program" class="form-control" required>
+                                        <option value="">Select Program...</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Year & Section *</label>
+                                    <select name="yearSection" id="yearSection" class="form-control" required>
+                                        <option value="">Select Year...</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <h3 class="form-section-title">Personal Details</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label class="form-label">First Name *</label>
+                                    <input type="text" name="givenName" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Last Name *</label>
+                                    <input type="text" name="surname" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email Address *</label>
+                                    <input type="email" name="email" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Sex</label>
+                                    <select name="sex" id="sex" class="form-control">
+                                        <option value="">Select...</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Account Status</label>
+                                    <select name="status" id="status" class="form-control" required>
+                                        <!-- Options populated via JS -->
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-header" style="background: var(--bg-body); border-top: 1px solid var(--border-color); border-bottom: none; justify-content: flex-end;">
+                            <a href="students.html" class="btn btn-secondary" style="margin-right: 1rem;">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Save Student Profile</button>
+                        </div>
+                    </div>
+                </form>
+            </main>
+        </div>
+    </div>
+
+    <script src="data/mock-data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/forms.js"></script>
+</body>
+</html>

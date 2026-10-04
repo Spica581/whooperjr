@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students | SPS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <div class="app-layout">
+        
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-icon">S</div>
+                <h2 style="font-size: 1.125rem;">SPS Portal</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">Dashboard</a>
+                <a href="students.html" class="nav-item">Student Records</a>
+                <a href="add-student.html" class="nav-item">Add Student</a>
+            </nav>
+        </aside>
+
+        <div class="main-wrapper">
+            <header class="top-header">
+                <h1 class="header-title">Student Records</h1>
+            </header>
+
+            <main class="content-area">
+                <div class="card">
+                    <div class="card-header">
+                        <input type="text" id="search-student" class="form-control" placeholder="Search by name or ID..." style="max-width: 300px;">
+                        <a href="add-student.html" class="btn btn-primary">+ Register New</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Student No.</th>
+                                    <th>Name</th>
+                                    <th>Program</th>
+                                    <th>Year/Section</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="students-table-body">
+                                <!-- Rendered via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="data/mock-data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/students.js"></script>
+</body>
+</html>
