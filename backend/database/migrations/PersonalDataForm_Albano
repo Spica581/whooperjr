@@ -1,0 +1,679 @@
+
+CREATE DATABASE PersonalDataFormDB;
+
+USE PersonalDataFormDB;
+
+CREATE TABLE AcademicYear
+(
+    AcademicYearID INT IDENTITY(1,1) PRIMARY KEY,
+    AcademicYear VARCHAR(20) NOT NULL,
+    IsActive BIT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE Semester
+(
+    SemesterID INT IDENTITY(1,1) PRIMARY KEY,
+    SemesterName VARCHAR(30) NOT NULL,
+    IsActive BIT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE Campus
+(
+    CampusID INT IDENTITY(1,1) PRIMARY KEY,
+    CampusCode VARCHAR(20),
+    CampusName VARCHAR(100) NOT NULL,
+    IsActive BIT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE Program
+(
+    ProgramID INT IDENTITY(1,1) PRIMARY KEY,
+    ProgramCode VARCHAR(20),
+    ProgramName VARCHAR(150) NOT NULL,
+    IsActive BIT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE Gender
+(
+    GenderID INT IDENTITY(1,1) PRIMARY KEY,
+    GenderName VARCHAR(20) NOT NULL,
+    IsActive BIT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE CivilStatus
+(
+    CivilStatusID INT IDENTITY(1,1) PRIMARY KEY,
+    StatusName VARCHAR(30) NOT NULL,
+    IsActive BIT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE Religion
+(
+    ReligionID INT IDENTITY(1,1) PRIMARY KEY,
+    ReligionName VARCHAR(100) NOT NULL,
+    IsActive BIT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE Citizenship
+(
+    CitizenshipID INT IDENTITY(1,1) PRIMARY KEY,
+    CountryName VARCHAR(100) NOT NULL,
+    IsActive BIT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE ResidenceType
+(
+    ResidenceTypeID INT IDENTITY(1,1) PRIMARY KEY,
+    ResidenceName VARCHAR(100) NOT NULL,
+    IsActive BIT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE ParentMaritalStatus
+(
+    ParentMaritalStatusID INT IDENTITY(1,1) PRIMARY KEY,
+    StatusName VARCHAR(50) NOT NULL,
+    IsActive BIT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE LivingArrangement
+(
+    LivingArrangementID INT IDENTITY(1,1) PRIMARY KEY,
+    ArrangementName VARCHAR(100) NOT NULL,
+    IsActive BIT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE MonthlyIncomeRange
+(
+    MonthlyIncomeRangeID INT IDENTITY(1,1) PRIMARY KEY,
+    IncomeRange VARCHAR(100) NOT NULL,
+    MinimumAmount DECIMAL(12,2),
+    MaximumAmount DECIMAL(12,2),
+    IsActive BIT NOT NULL DEFAULT 1
+);
+
+
+CREATE TABLE SchoolType
+(
+    SchoolTypeID INT IDENTITY(1,1) PRIMARY KEY,
+    SchoolTypeName VARCHAR(50) NOT NULL,
+    IsActive BIT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE TrackProgram
+(
+    TrackProgramID INT IDENTITY(1,1) PRIMARY KEY,
+    TrackName VARCHAR(100) NOT NULL,
+    IsActive BIT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE OrganizationType
+(
+    OrganizationTypeID INT IDENTITY(1,1) PRIMARY KEY,
+    TypeName VARCHAR(100) NOT NULL,
+    IsActive BIT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE DisabilityType
+(
+    DisabilityTypeID INT IDENTITY(1,1) PRIMARY KEY,
+    DisabilityName VARCHAR(100) NOT NULL,
+    IsActive BIT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE EntranceExamResult
+(
+    EntranceExamResultID INT IDENTITY(1,1) PRIMARY KEY,
+    ResultName VARCHAR(100) NOT NULL,
+    IsActive BIT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE FinancialSupport
+(
+    FinancialSupportID INT IDENTITY(1,1) PRIMARY KEY,
+    SupportName VARCHAR(100) NOT NULL,
+    IsActive BIT NOT NULL DEFAULT 1
+);
+
+
+
+/*
+    GENERAL INFORMATION
+*/
+
+CREATE TABLE GeneralInformation
+(
+    StudentID INT IDENTITY(1,1) PRIMARY KEY,
+
+    StudentNo VARCHAR(20) NOT NULL UNIQUE,
+
+    AcademicYearID INT NOT NULL,
+    SemesterID INT NOT NULL,
+    CampusID INT NOT NULL,
+    ProgramID INT NOT NULL,
+
+    Surname VARCHAR(100) NOT NULL,
+    FirstName VARCHAR(100) NOT NULL,
+    MiddleName VARCHAR(100),
+    Suffix VARCHAR(20),
+
+    Nickname VARCHAR(100),
+
+    BirthDate DATE NOT NULL,
+    BirthPlace VARCHAR(150),
+
+    GenderID INT NOT NULL,
+    CivilStatusID INT NOT NULL,
+    ReligionID INT,
+    CitizenshipID INT NOT NULL,
+
+    LanguagesSpoken VARCHAR(255),
+
+    IsIndigenous BIT NOT NULL DEFAULT 0,
+    IndigenousGroup VARCHAR(100),
+
+    ResidenceTypeID INT,
+
+    PresentAddress VARCHAR(255),
+    PermanentAddress VARCHAR(255),
+
+    ContactNo VARCHAR(20),
+    Email VARCHAR(100),
+
+    MessengerLink VARCHAR(255),
+
+    PhotoPath VARCHAR(255),
+
+    CreatedAt DATETIME DEFAULT GETDATE(),
+    UpdatedAt DATETIME
+);
+
+/*
+    FAMILY BACKGROUND
+*/
+
+CREATE TABLE FamilyBackground
+(
+    FamilyBackgroundID INT IDENTITY(1,1) PRIMARY KEY,
+
+    StudentID INT NOT NULL UNIQUE,
+
+    ParentMaritalStatusID INT,
+
+    LivingArrangementID INT,
+
+    MonthlyIncomeRangeID INT,
+
+	FatherSurname VARCHAR(100),
+    FatherFirstName VARCHAR(100),
+    FatherMiddleName VARCHAR(100),
+    FatherSpouseSuffix VARCHAR(20),
+	FatherContactNo VARCHAR(20),
+
+	FatherCitezenship VARCHAR(100),
+
+	MotherSurname VARCHAR(100),
+    MotherFirstName VARCHAR(100),
+    MotherMiddleName VARCHAR(100),
+    MotherMaidenName VARCHAR(20),
+	MotherContactNo VARCHAR(20),
+
+	MotherCitezenship VARCHAR(100),
+
+
+	FatherEducationalAttainment VARCHAR(100),
+
+	MotherEducationalAttainment VARCHAR(100),
+
+    Is4PsMember BIT NOT NULL DEFAULT 0,
+
+    DSWDHouseholdNo VARCHAR(50),
+
+    FinancialSupportID INT,
+
+    SpouseSurname VARCHAR(100),
+    SpouseFirstName VARCHAR(100),
+    SpouseMiddleName VARCHAR(100),
+    SpouseSuffix VARCHAR(20),
+
+    SpouseContactNo VARCHAR(20),
+
+	
+	GuardianSurname VARCHAR(100),
+    GuardianFirstName VARCHAR(100),
+    GuardianMiddleName VARCHAR(100),
+    GuardianMaidenName VARCHAR(20),
+	GuardianContactNo VARCHAR(20),
+
+	GuardianCitezenship VARCHAR(100),
+
+    HasChildren BIT NOT NULL DEFAULT 0,
+
+    NumberOfChildren TINYINT DEFAULT 0,
+
+    IsSoloParent BIT NOT NULL DEFAULT 0
+);
+
+
+
+
+/*
+    SIBLING
+*/
+
+CREATE TABLE Sibling
+(
+    SiblingID INT IDENTITY(1,1) PRIMARY KEY,
+
+    StudentID INT NOT NULL,
+
+    Surname VARCHAR(100) NOT NULL,
+
+    FirstName VARCHAR(100) NOT NULL,
+
+    MiddleName VARCHAR(100),
+
+    Suffix VARCHAR(20),
+
+    BirthDate DATE,
+
+    Age TINYINT,
+
+    Occupation VARCHAR(100),
+
+    SchoolCompany VARCHAR(150),
+
+    ContactNo VARCHAR(20),
+
+    BirthOrder TINYINT
+);
+
+/*
+    EDUCATION HISTORY
+*/
+
+CREATE TABLE EducationHistory
+(
+    EducationHistoryID INT IDENTITY(1,1) PRIMARY KEY,
+
+    StudentID INT NOT NULL,
+
+
+    ElemName VARCHAR(150) NOT NULL,
+
+    ElemlAddress VARCHAR(255),
+
+    ElemYearGraduated SMALLINT,
+
+
+	JHSName VARCHAR(150) NOT NULL,
+
+    JHSAddress VARCHAR(255),
+
+    JHSYearGraduated SMALLINT,
+
+		
+	SHSName VARCHAR(150) NOT NULL,
+
+    SHSAddress VARCHAR(255),
+
+    SHSYearGraduated SMALLINT,
+
+
+	CollegeName VARCHAR(150) NOT NULL,
+
+    Collegeaddress VARCHAR(255),
+
+
+    TrackProgramID INT
+);
+
+
+
+/*
+    AWARD
+*/
+
+CREATE TABLE Award
+(
+    AwardID INT IDENTITY(1,1) PRIMARY KEY,
+
+    EducationHistoryID INT NOT NULL,
+
+    AwardName VARCHAR(150) NOT NULL,
+
+    YearReceived SMALLINT
+);
+
+
+
+/*
+    SCHOLARSHIP
+*/
+
+CREATE TABLE Scholarship
+(
+    ScholarshipID INT IDENTITY(1,1) PRIMARY KEY,
+
+    EducationHistoryID INT NOT NULL,
+
+    ScholarshipName VARCHAR(150) NOT NULL,
+
+    Sponsor VARCHAR(150),
+
+    YearAwarded SMALLINT
+);
+
+
+
+/*
+    EMPLOYMENT
+*/
+
+CREATE TABLE Employment
+(
+    EmploymentID INT IDENTITY(1,1) PRIMARY KEY,
+
+    StudentID INT NOT NULL UNIQUE,
+
+    IsEmployed BIT NOT NULL DEFAULT 0,
+
+    Employer VARCHAR(150),
+
+    Position VARCHAR(100),
+
+    EmploymentSince DATE,
+
+    MonthlyIncome DECIMAL(12,2)
+);
+
+
+
+/*
+    ORGANIZATION
+*/
+
+CREATE TABLE Organization
+(
+    OrganizationID INT IDENTITY(1,1) PRIMARY KEY,
+
+    StudentID INT NOT NULL,
+
+    OrganizationTypeID INT,
+
+    OrganizationName VARCHAR(150) NOT NULL,
+
+    PositionHeld VARCHAR(100),
+
+    YearJoined SMALLINT
+);
+
+
+
+
+
+CREATE TABLE MedicalInformation
+(
+    MedicalID INT IDENTITY(1,1) PRIMARY KEY,
+
+    StudentID INT NOT NULL UNIQUE,
+
+    HeightMeters DECIMAL(4,2),
+
+    WeightKg DECIMAL(5,2),
+
+    IsPWD BIT NOT NULL DEFAULT 0,
+
+    DisabilityTypeID INT,
+
+    PWDIDNumber VARCHAR(50),
+
+    AccidentHistory VARCHAR(MAX),
+
+    ChronicIllness VARCHAR(MAX),
+
+    HadTherapy BIT NOT NULL DEFAULT 0,
+
+    TherapyWhen DATE,
+
+    CurrentCondition VARCHAR(MAX)
+);
+
+
+
+/*
+    MEDICATION
+*/
+
+CREATE TABLE Medication
+(
+    MedicationID INT IDENTITY(1,1) PRIMARY KEY,
+
+    MedicalID INT NOT NULL,
+
+    MedicationName VARCHAR(150) NOT NULL,
+
+    Dosage VARCHAR(100),
+
+    Frequency VARCHAR(100)
+);
+
+
+
+/*
+    STUDENT PROFILE
+*/
+
+CREATE TABLE StudentProfile
+(
+    ProfileID INT IDENTITY(1,1) PRIMARY KEY,
+
+    StudentID INT NOT NULL UNIQUE,
+
+    SpecialInterests VARCHAR(MAX),
+
+    SkillsTalents VARCHAR(MAX),
+
+    Hobbies VARCHAR(MAX),
+
+    AmbitionsGoals VARCHAR(MAX),
+
+    GuidingPrinciple VARCHAR(MAX),
+
+    PersonalityTrait VARCHAR(MAX),
+
+    LatestGPA DECIMAL(4,2),
+
+    EntranceExamResultID INT
+);
+
+
+
+/*
+    GENERAL INFORMATION
+*/
+
+ALTER TABLE GeneralInformation
+ADD CONSTRAINT FK_GeneralInformation_AcademicYear
+FOREIGN KEY (AcademicYearID)
+REFERENCES AcademicYear(AcademicYearID);
+
+ALTER TABLE GeneralInformation
+ADD CONSTRAINT FK_GeneralInformation_Semester
+FOREIGN KEY (SemesterID)
+REFERENCES Semester(SemesterID);
+
+ALTER TABLE GeneralInformation
+ADD CONSTRAINT FK_GeneralInformation_Campus
+FOREIGN KEY (CampusID)
+REFERENCES Campus(CampusID);
+
+ALTER TABLE GeneralInformation
+ADD CONSTRAINT FK_GeneralInformation_Program
+FOREIGN KEY (ProgramID)
+REFERENCES Program(ProgramID);
+
+ALTER TABLE GeneralInformation
+ADD CONSTRAINT FK_GeneralInformation_Gender
+FOREIGN KEY (GenderID)
+REFERENCES Gender(GenderID);
+
+ALTER TABLE GeneralInformation
+ADD CONSTRAINT FK_GeneralInformation_CivilStatus
+FOREIGN KEY (CivilStatusID)
+REFERENCES CivilStatus(CivilStatusID);
+
+ALTER TABLE GeneralInformation
+ADD CONSTRAINT FK_GeneralInformation_Religion
+FOREIGN KEY (ReligionID)
+REFERENCES Religion(ReligionID);
+
+ALTER TABLE GeneralInformation
+ADD CONSTRAINT FK_GeneralInformation_Citizenship
+FOREIGN KEY (CitizenshipID)
+REFERENCES Citizenship(CitizenshipID);
+
+ALTER TABLE GeneralInformation
+ADD CONSTRAINT FK_GeneralInformation_ResidenceType
+FOREIGN KEY (ResidenceTypeID)
+REFERENCES ResidenceType(ResidenceTypeID);
+
+
+/*==========================================================
+    FAMILY BACKGROUND
+==========================================================*/
+
+ALTER TABLE FamilyBackground
+ADD CONSTRAINT FK_FamilyBackground_Student
+FOREIGN KEY (StudentID)
+REFERENCES GeneralInformation(StudentID);
+
+ALTER TABLE FamilyBackground
+ADD CONSTRAINT FK_FamilyBackground_ParentMaritalStatus
+FOREIGN KEY (ParentMaritalStatusID)
+REFERENCES ParentMaritalStatus(ParentMaritalStatusID);
+
+ALTER TABLE FamilyBackground
+ADD CONSTRAINT FK_FamilyBackground_LivingArrangement
+FOREIGN KEY (LivingArrangementID)
+REFERENCES LivingArrangement(LivingArrangementID);
+
+ALTER TABLE FamilyBackground
+ADD CONSTRAINT FK_FamilyBackground_Income
+FOREIGN KEY (MonthlyIncomeRangeID)
+REFERENCES MonthlyIncomeRange(MonthlyIncomeRangeID);
+
+ALTER TABLE FamilyBackground
+ADD CONSTRAINT FK_FamilyBackground_FinancialSupport
+FOREIGN KEY (FinancialSupportID)
+REFERENCES FinancialSupport(FinancialSupportID);
+
+
+/*==========================================================
+    SIBLING
+==========================================================*/
+
+ALTER TABLE Sibling
+ADD CONSTRAINT FK_Sibling_Student
+FOREIGN KEY (StudentID)
+REFERENCES GeneralInformation(StudentID);
+
+
+/*==========================================================
+    EDUCATION HISTORY
+==========================================================*/
+
+ALTER TABLE EducationHistory
+ADD CONSTRAINT FK_EducationHistory_Student
+FOREIGN KEY (StudentID)
+REFERENCES GeneralInformation(StudentID);
+
+
+ALTER TABLE EducationHistory
+ADD CONSTRAINT FK_EducationHistory_TrackProgram
+FOREIGN KEY (TrackProgramID)
+REFERENCES TrackProgram(TrackProgramID);
+
+
+/*==========================================================
+    AWARD
+==========================================================*/
+
+ALTER TABLE Award
+ADD CONSTRAINT FK_Award_EducationHistory
+FOREIGN KEY (EducationHistoryID)
+REFERENCES EducationHistory(EducationHistoryID);
+
+
+/*==========================================================
+    SCHOLARSHIP
+==========================================================*/
+
+ALTER TABLE Scholarship
+ADD CONSTRAINT FK_Scholarship_EducationHistory
+FOREIGN KEY (EducationHistoryID)
+REFERENCES EducationHistory(EducationHistoryID);
+
+
+/*==========================================================
+    EMPLOYMENT
+==========================================================*/
+
+ALTER TABLE Employment
+ADD CONSTRAINT FK_Employment_Student
+FOREIGN KEY (StudentID)
+REFERENCES GeneralInformation(StudentID);
+
+
+/*==========================================================
+    ORGANIZATION
+==========================================================*/
+
+ALTER TABLE Organization
+ADD CONSTRAINT FK_Organization_Student
+FOREIGN KEY (StudentID)
+REFERENCES GeneralInformation(StudentID);
+
+ALTER TABLE Organization
+ADD CONSTRAINT FK_Organization_OrganizationType
+FOREIGN KEY (OrganizationTypeID)
+REFERENCES OrganizationType(OrganizationTypeID);
+
+
+/*==========================================================
+    MEDICAL INFORMATION
+==========================================================*/
+
+ALTER TABLE MedicalInformation
+ADD CONSTRAINT FK_MedicalInformation_Student
+FOREIGN KEY (StudentID)
+REFERENCES GeneralInformation(StudentID);
+
+ALTER TABLE MedicalInformation
+ADD CONSTRAINT FK_MedicalInformation_DisabilityType
+FOREIGN KEY (DisabilityTypeID)
+REFERENCES DisabilityType(DisabilityTypeID);
+
+
+/*==========================================================
+    MEDICATION
+==========================================================*/
+
+ALTER TABLE Medication
+ADD CONSTRAINT FK_Medication_Medical
+FOREIGN KEY (MedicalID)
+REFERENCES MedicalInformation(MedicalID);
+
+
+/*==========================================================
+    STUDENT PROFILE
+==========================================================*/
+
+ALTER TABLE StudentProfile
+ADD CONSTRAINT FK_StudentProfile_Student
+FOREIGN KEY (StudentID)
+REFERENCES GeneralInformation(StudentID);
+
+ALTER TABLE StudentProfile
+ADD CONSTRAINT FK_StudentProfile_EntranceExam
+FOREIGN KEY (EntranceExamResultID)
+REFERENCES EntranceExamResult(EntranceExamResultID);
